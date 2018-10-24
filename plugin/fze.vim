@@ -77,7 +77,7 @@ function! s:fze_execute()
 endfunction
 
 command! -nargs=* Fze call fzf#run({
-            \ 'source':  'rg --files --no-ignore --hidden --follow --glob "!{.git,node_modules}/*" --glob "!*{.jpg,png}" 2> /dev/null',
+            \ 'source':  'rg --files --no-ignore --hidden --follow --glob "!{.git,node_modules}/*" 2> /dev/null',
             \ 'sink*':    function('<sid>fze_handler'),
             \ 'options': '--ansi --expect=ctrl-t,ctrl-v,ctrl-s --multi --bind=ctrl-a:select-all,ctrl-d:deselect-all '
             \ })
