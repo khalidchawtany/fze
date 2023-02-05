@@ -53,6 +53,7 @@ function! s:fze_handler(lines)
 
     let s:file_list = map(a:lines[1:], 's:fze_put_files(v:val)')
     command! -buffer FzeExec  call s:fze_execute()
+    command! -buffer FzeRefresh  call s:fze_reset_files()
 endfunction
 
 function! s:fze_revert_changes()
@@ -60,6 +61,10 @@ function! s:fze_revert_changes()
         silent! earlier 1f
         set nomodified
     endif
+endfunction
+
+function! s:fze_reset_files()
+	let s:file_list = getbufline(bufnr(""), 1, "$")
 endfunction
 
 function! s:fze_execute()
